@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Bicikli:
-    def __init__(self, tipus, ar, allapot="Elérhető"):
+    def __init__(self, tipus, ar=1500, allapot="Elérhető"):
         self.tipus = tipus
         self.ar = ar
         self.allapot = allapot
@@ -100,10 +100,10 @@ def interfesz():
     my_kolcsonzo = Kolcsonzo("BringaBubu")
 
     # kerékpár példányok típusonként:
-    hegyi1 = Hegyi("Mountenbike", 1500)
-    orszaguti1 = Orszaguti("Országúti", 1800)
-    orszaguti2 = Orszaguti("Országúti", 1800, "Nem elérhető")
-    gyermek1 = Gyermek("Gyermek", 1200)
+    hegyi1 = Hegyi("Mountenbike")
+    orszaguti1 = Orszaguti("Országúti")
+    orszaguti2 = Orszaguti("Országúti")
+    gyermek1 = Gyermek("Gyermek")
 
     # kerékoárok felvétele a kölcsönzőbe
     my_kolcsonzo + hegyi1
