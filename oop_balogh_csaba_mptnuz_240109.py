@@ -112,7 +112,7 @@ def interfesz():
     my_kolcsonzo + gyermek1
 
     while True:
-        print("VÁLASSZON AZ ALÁBBI ESEMÉNYEK KÖZÜL")
+        print("\nVÁLASSZON AZ ALÁBBI ESEMÉNYEK KÖZÜL")
         print("1. Kölcsönzés")
         print("2. Lemondás")
         print("3. Listázás")
@@ -143,7 +143,7 @@ def interfesz():
                 print("Melyik kölcsönzést mondod le? ")
                 for s, kolcsonzes in enumerate(my_kolcsonzo.esemenyek):
                     print(f"{s + 1}. {kolcsonzes}")
-                    kolcsonzes_num = int(input()) - 1
+                kolcsonzes_num = int(input()) - 1
                 if 0 <= kolcsonzes_num < len(my_kolcsonzo.esemenyek):
                     kolcsonzes = my_kolcsonzo.esemenyek[kolcsonzes_num]
                     eredmeny = my_kolcsonzo.lemondas(kolcsonzes)
