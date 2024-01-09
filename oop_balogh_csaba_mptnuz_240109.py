@@ -114,23 +114,55 @@ def interfesz():
     while True:
         print("VÁLASSZON AZ ALÁBBI ESEMÉNYEK KÖZÜL")
         print("1. Kölcsönzés")
-        print("2. Lemondása")
-        print("3. Listázása")
+        print("2. Lemondás")
+        print("3. Listázás")
         print("0. Bezár")
 
         my_choice = int(input("Opció: "))
+
+        # Kölcsönzés
         if my_choice == 1:
             my_tipus = input("Típus (Hegyi / Gyermek / Országúti): ")
             valasztas = my_kolcsonzo.keres(my_tipus)
             if valasztas:
-                strDatum = input("Kívánt dátum (YYYY-MM-DD: ")
+                str_datum = input("Kívánt dátum (YYYY-MM-DD): ")
 
                 try:
-                    dateDatum = datetime.strptime(strDatum, "%Y-%m-%d")
-                    valasz = my_kolcsonzo.kolcsonzes(valasztas,dateDatum)
+                    date_datum = datetime.strptime(str_datum, "%Y-%m-%d")
+                    valasz = my_kolcsonzo.kolcsonzes(valasztas, date_datum)
                     print(valasz)
                 except ValueError:
                     print("Hibás dátum")
             else:
-                pass
+                print("Egyetlen pélány sem érhető el ebből a típusból")
 
+        # Lemondás
+        elif my_choice == 2:
+            if my_kolcsonzo.esemenyek:
+                print ("Melyik kölcsönzést mondod le? ")
+                for s, kolcsonzes in enumerate(my_kolcsonzo.esemenyek):
+                    print(f"{s + 1}. {kolcsonzes}")
+                    kolcsonzes_num = int(input()) - 1
+                if 0 <= kolcsonzes_num < len(my_kolcsonzo.esemenyek):
+                        kolcsonzes = my_kolcsonzo.esemenyek[kolcsonzes_num]
+                        eredmeny = my_kolcsonzo.lemondas(kolcsonzes)
+                        print(eredmeny)
+                else:
+                    print("Hiba történt")
+            else:
+                print("Üres halmaz")
+
+        # Listázás
+        elif my_choice == 3:
+            my_kolcsonzo.listazas()
+
+        # Bezárás
+        elif my_choice == 0:
+            print("Bezárás")
+            break
+
+        else:
+            print("Válassz az opciók közül!")
+
+
+interfesz()
