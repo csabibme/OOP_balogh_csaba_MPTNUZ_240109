@@ -40,6 +40,7 @@ class Kolcsonzo:
         self.kerekparok = []
         self.esemeny = []
 
+
     def __add__(self, other):
         if isinstance(other, Bicikli):
             self.kerekparok.append(other)
