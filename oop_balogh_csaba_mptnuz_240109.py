@@ -97,4 +97,40 @@ class Kolcsonzo:
 # Készíts egy egyszerű felhasználói interfészt (20 pont)
 
 def interfesz():
-    pass
+    my_kolcsonzo = Kolcsonzo("BringaBubu")
+
+    # kerékpár példányok típusonként:
+    hegyi1 = Hegyi("Mountenbike", 1500, "Elérhető")
+    orszaguti1 = Orszaguti("Országúti", 1800, "Elérhető")
+    orszaguti2 = Orszaguti("Országúti", 1800, "Nem elérhető")
+    gyermek1 = Gyermek("Gyermek", 1200, "Elérhető")
+
+    # kerékoárok felvétele a kölcsönzőbe
+    my_kolcsonzo + hegyi1
+    my_kolcsonzo + orszaguti1
+    my_kolcsonzo + orszaguti2
+    my_kolcsonzo + gyermek1
+
+    while True:
+        print("VÁLASSZON AZ ALÁBBI ESEMÉNYEK KÖZÜL")
+        print("1. Kölcsönzés")
+        print("2. Lemondása")
+        print("3. Listázása")
+        print("0. Bezár")
+
+        my_choice = int(input("Opció: "))
+        if my_choice == 1:
+            my_tipus = input("Típus (Hegyi / Gyermek / Országúti): ")
+            valasztas = my_kolcsonzo.keres(my_tipus)
+            if valasztas:
+                strDatum = input("Kívánt dátum (YYYY-MM-DD: ")
+
+                try:
+                    dateDatum = datetime.strptime(strDatum, "%Y-%m-%d")
+                    valasz = my_kolcsonzo.kolcsonzes(valasztas,dateDatum)
+                    print(valasz)
+                except ValueError:
+                    print("Hibás dátum")
+            else:
+                pass
+
