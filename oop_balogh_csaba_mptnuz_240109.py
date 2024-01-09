@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Bicikli:
-    def __init__(self, tipus, ar, allapot):
+    def __init__(self, tipus, ar, allapot="Elérhető"):
         self.tipus = tipus
         self.ar = ar
         self.allapot = allapot
@@ -100,10 +100,10 @@ def interfesz():
     my_kolcsonzo = Kolcsonzo("BringaBubu")
 
     # kerékpár példányok típusonként:
-    hegyi1 = Hegyi("Mountenbike", 1500, "Elérhető")
-    orszaguti1 = Orszaguti("Országúti", 1800, "Elérhető")
+    hegyi1 = Hegyi("Mountenbike", 1500)
+    orszaguti1 = Orszaguti("Országúti", 1800)
     orszaguti2 = Orszaguti("Országúti", 1800, "Nem elérhető")
-    gyermek1 = Gyermek("Gyermek", 1200, "Elérhető")
+    gyermek1 = Gyermek("Gyermek", 1200)
 
     # kerékoárok felvétele a kölcsönzőbe
     my_kolcsonzo + hegyi1
@@ -122,7 +122,7 @@ def interfesz():
 
         # Kölcsönzés
         if my_choice == 1:
-            my_tipus = input("Típus (Hegyi / Gyermek / Országúti): ")
+            my_tipus = input("Típus (Mountenbike / Gyermek / Országúti): ")
             valasztas = my_kolcsonzo.keres(my_tipus)
             if valasztas:
                 str_datum = input("Kívánt dátum (YYYY-MM-DD): ")
@@ -132,7 +132,7 @@ def interfesz():
                     valasz = my_kolcsonzo.kolcsonzes(valasztas, date_datum)
                     print(valasz)
                 except ValueError:
-                    print("Hibás dátum")
+                    print("Hibás dátum, a dátum nem lehet kisebb a mai napnál")
             else:
                 print("Egyetlen pélány sem érhető el ebből a típusból")
 
