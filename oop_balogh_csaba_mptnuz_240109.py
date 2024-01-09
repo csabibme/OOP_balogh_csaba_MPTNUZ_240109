@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from datetime import datetime
 
 
@@ -120,7 +120,8 @@ def interfesz():
 
         my_choice = int(input("Opció: "))
 
-        # Kölcsönzés
+        # Kölcsönzés A kölcsönzés létrehozásakor ellenőrizd,
+        # hogy a dátum érvényes (jövőbeni vagy aznapi) és a bicikli elérhető-e akkor. (10 pont)
         if my_choice == 1:
             my_tipus = input("Típus (Mountenbike / Gyermek / Országúti): ")
             valasztas = my_kolcsonzo.keres(my_tipus)
@@ -139,18 +140,18 @@ def interfesz():
         # Lemondás
         elif my_choice == 2:
             if my_kolcsonzo.esemenyek:
-                print ("Melyik kölcsönzést mondod le? ")
+                print("Melyik kölcsönzést mondod le? ")
                 for s, kolcsonzes in enumerate(my_kolcsonzo.esemenyek):
                     print(f"{s + 1}. {kolcsonzes}")
                     kolcsonzes_num = int(input()) - 1
                 if 0 <= kolcsonzes_num < len(my_kolcsonzo.esemenyek):
-                        kolcsonzes = my_kolcsonzo.esemenyek[kolcsonzes_num]
-                        eredmeny = my_kolcsonzo.lemondas(kolcsonzes)
-                        print(eredmeny)
+                    kolcsonzes = my_kolcsonzo.esemenyek[kolcsonzes_num]
+                    eredmeny = my_kolcsonzo.lemondas(kolcsonzes)
+                    print(eredmeny)
                 else:
                     print("Hiba történt")
             else:
-                print("Üres halmaz")
+                print("Nincs ilyen kölcsönzés")
 
         # Listázás
         elif my_choice == 3:
